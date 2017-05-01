@@ -1,4 +1,4 @@
-# cosmac-el
+# cosmac elf
 
 Some files for Cosmac Elf self build simple computer based on 1976 article in Popular Electronics based on CDP1802 cpu.
 
