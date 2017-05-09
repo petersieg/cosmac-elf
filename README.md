@@ -10,6 +10,8 @@ a18 - assembler incl. C source
 
 microelf - pcb files for Eagle and Elecrow incl. supporting files. By Mike Riley (see links).
 
+palm_elf.zip - TinyELF emulator and ElfASM assembler incl. pdb editor in java.
+
 Links:
 
 http://www.elf-emulation.com/hardware.html
