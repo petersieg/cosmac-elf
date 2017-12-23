@@ -2,6 +2,8 @@
 
 Some files for Cosmac Elf self build simple computer based on 1976 article in Popular Electronics based on CDP1802 cpu.
 
+![Bild](https://github.com/petersieg/cosmac-elf/blob/master/microelf.jpg)
+
 Files:
 
 cosmac.zip - emulator for windows up to XP
