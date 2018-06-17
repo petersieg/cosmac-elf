@@ -12,6 +12,8 @@ a18 - assembler incl. C source
 
 microelf - pcb files for Eagle and Elecrow incl. supporting files. By Mike Riley (see links).
 
+EDIT: Have tried to convert brd to utilize 12 equal switches (no special IN switch; no mod needed). UNTESTED!! See file Microelf_pcb2.zip
+
 palm_elf.zip - TinyELF emulator and ElfASM assembler incl. pdb editor in java.
 
 simelf - Cosmac ELF emulator in javascript. Start index.html.
