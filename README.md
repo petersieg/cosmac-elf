@@ -16,7 +16,7 @@ EDIT: Have tried to convert brd to utilize 12 equal switches (no special IN swit
 
 palm_elf.zip - TinyELF emulator and ElfASM assembler incl. pdb editor in java.
 
-simelf - Cosmac ELF emulator in javascript. Start index.html.
+simelf - Cosmac ELF emulator in javascript. Start emu.html.
 
 Links:
 
