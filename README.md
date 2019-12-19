@@ -6,7 +6,7 @@ Some files for Cosmac Elf self build simple computer based on 1976 article in Po
 
 Files:
 
-cosmac.zip - emulator for windows up to XP
+cosmac.zip - Win 16-bit emulator for windows up to XP. For Win10 64-bit, one can use: https://github.com/otya128/winevdm
 
 a18 - assembler incl. C source
 
