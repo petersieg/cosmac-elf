@@ -26,7 +26,7 @@ http://www.retrotechnology.com/memship/memship.html
 
 http://www.donnelly-house.net/programming/cdp1802/simelf/
 
-https://login.yahoo.com/config/login;_ylt=AtI46q.M_jXQ2vBSmsjhpB.gwsEF?.src=ygrp&.intl=us&.lang=en-US&.done=https://beta.groups.yahoo.com%2Fneo%2Fgroups%2Fcosmacelf%2Finfo%3Freferrer%3Dtrs80club
+https://groups.io/g/cosmacelf
 
 Kleinstes Programm: LOAD 7B IN 30 IN 00 IN 00 IN LOAD wieder weg; dann RUN. Sollte Q-LED leuchten..
 
