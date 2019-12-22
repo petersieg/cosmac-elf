@@ -8,7 +8,7 @@ Files:
 
 cosmac.zip - Win 16-bit emulator for windows up to XP. For Win10 64-bit, one can use: https://github.com/otya128/winevdm
 
-a18 - assembler incl. C source
+a18 - assembler incl. C source - DOS version required cwsdpmi.exe
 
 microelf - pcb files for Eagle and Elecrow incl. supporting files. By Mike Riley (see links).
 
