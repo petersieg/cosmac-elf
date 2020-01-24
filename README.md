@@ -12,7 +12,8 @@ a18 - assembler incl. C source - DOS version requires cwsdpmi.exe
 
 microelf - pcb files for Eagle and Elecrow incl. supporting files. By Mike Riley (see links).
 
-EDIT: Have tried to convert brd to utilize 12 equal switches (no special IN switch; no mod needed). UNTESTED!! See file Microelf_pcb2.zip
+EDIT: Have tried to convert brd to utilize 12 equal switches (no special IN switch; no mod needed). See file Microelf_pcb2.zip
+(Verified working on 2020-01-24).
 
 palm_elf.zip - TinyELF emulator and ElfASM assembler incl. pdb editor in java.
 
@@ -33,3 +34,5 @@ Kleinstes Programm: LOAD 7B IN 30 IN 00 IN 00 IN LOAD wieder weg; dann RUN. Soll
 smallest counter program:
 
 @0000:EF 80 BF AF 9E 5F 1E 64 30 01 .
+
+NOP code is C4 if filling first bytes is needed.
