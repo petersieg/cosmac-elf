@@ -36,3 +36,23 @@ smallest counter program:
 @0000:EF 80 BF AF 9E 5F 1E 64 30 01 .
 
 NOP code is C4 if filling first bytes is needed.
+ 
+Würfel (Throw a dice):
+````
+@0000:
+F8 00 B2
+F8 FF A2 E2
+F8 00 AA
+37 0A
+37 1A
+1A 8A
+FF 06
+32 17
+E2
+30 0C
+AA
+30 0C
+8A FC 01
+52 64 22
+30 07
+````
