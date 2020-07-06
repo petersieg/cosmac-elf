@@ -6,7 +6,7 @@ Some files for Cosmac Elf self build simple computer based on 1976 article in Po
 
 Und mit weißer Platine:
 
-![Bild](https://github.com/petersieg/cosmac-elf/blob/master/microelf_weiß.jpg)
+![Bild](https://github.com/petersieg/cosmac-elf/blob/master/microelf-weiß.jpeg)
 
 Files:
 
