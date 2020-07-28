@@ -2,6 +2,10 @@
 
 Some files for Cosmac Elf self build simple computer based on 1976 article in Popular Electronics based on CDP1802 cpu.
 
+Updates:
+2020-07-26: a18.zip to include Mac OS X binary and source changes.
+
+
 ![Bild](https://github.com/petersieg/cosmac-elf/blob/master/microelf.jpg)
 
 Und mit weißer Platine:
