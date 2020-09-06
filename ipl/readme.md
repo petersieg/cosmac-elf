@@ -1,6 +1,8 @@
 # IPL - Inital Program Loader
 
 Beginnings for a ipl based on arduino to upload program to microelf board
+Attention: ONLY works if using 3-pos toggle switches with a middle position,
+for IN and D0-D7!
 
 ```
   (c) 2020 Peter Sieg - released under GNU GPL V2
