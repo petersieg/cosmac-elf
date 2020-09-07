@@ -1,0 +1,235 @@
+                        		TITL	"1802/1805A MEISTERMIND"
+                        		EJCT	60
+1802/1805A MEISTERMIND
+
+                        
+                        ;     MEISTERMIND number guessing game for the COSMAC ELF
+                        ;                 written in 1977 by Klaus Ernst
+                        ;
+                        ; Register Definitions:
+                        ;
+   0000                 R0		EQU	0
+   0001                 R1		EQU	1
+   0002                 R2		EQU	2
+   0003                 R3		EQU	3
+   0004                 R4		EQU	4
+   0005                 R5		EQU	5
+   0006                 R6		EQU	6
+   0007                 R7		EQU	7
+   0008                 R8		EQU	8
+   0009                 R9		EQU	9
+   000a                 RA		EQU	10
+   000b                 RB		EQU	11
+   000c                 RC		EQU	12
+   000d                 RD		EQU	13
+   000e                 RE		EQU	14
+   000f                 RF		EQU	15
+                        
+                        ;     REGISTERS
+                        ;     R0   program counter    
+                        ;     R1   memory pointer
+                        ;     R2   number of random digits (5)    
+                        ;     R3   paritytest turn counter
+                        ;     R4   store for number of digits played    
+                        ;     R5   random # generator counter
+                        ;     R6   random # store 2    
+                        ;     R7   random # store 1    
+                        ;     R8   right # , right place counter    
+                        ;     R9   right # , wrong place counter    
+                        ;     RA   number of digits selected by player    
+                        ;     RB   store for guessed digit    
+                        ;     RC    
+                        ;     RD   number of digits entered    
+                        ;     RE    
+                        ;     RF    
+                        
+                        ;     LABELS
+                        ;     STUP  00   setup    
+                        ;     NDIG  0F   next digit    
+                        ;     CONT  18   countdown    
+                        ;     RND   12   random # generator
+                        ;     PAR1  2E   parity test 1    
+                        ;     PAR2  3C   parity test 2    
+                        ;     PAR3  4C   parity test 3    
+                        ;     SAME  62   2 digits same    
+                        ;     GAME  65   ready for game    
+                        ;     NTRY  77   next try    
+                        ;     GNDG  79   guess next digit    
+                        ;     ADV   85   advance right/right counter    
+                        ;     RWR   8C   right/wrong test    
+                        ;     RPT   92   repeat right/wrong test
+                        ;     INCR  99   increment right/wrong counter    
+                        ;     DSPL  A0   display    
+1802/1805A MEISTERMIND
+
+                        
+                        ;    note1 : | is used for 'not equal' (e.g. if D|0 branch to 79)
+                        ;    note2 : this listing using mnemonics and labels was NOT written
+                        ;           with an assembler ( I followed the program listing conventions 
+                        ;           I found in the book "PROGRAMMER'S GUIDE TO THE 1802 ( with an
+                        ;           assembler for your machine ) by Tom Swan, HAYDEN 1981" )
+                        
+                        	cpu 1802
+   0000                 	org 0
+                        
+   0000   c4            STUP	NOP
+   0001   f8 05         	LDI $05      ; load 05 into D
+   0003   a2            	PLO   R2 ; put D in R2.0
+   0004   f8 e0         	LDI $E0      ; load E0 into D
+   0006   a7            	PLO   R7 ; put D in R7.0
+   0007   f8 e8         	LDI $E8      ; load E8 into D
+   0009   a6            	PLO   R6 ; put D in R6.0
+   000a   f8 a0         	LDI $A0      ; load A0 into D
+   000c   a8            	PLO   R8 ; put D in R8.0
+   000d   f8 b0         	LDI $B0      ; load B0 intoD
+   000f   a9            	PLO   R9 ; put D in R9.0
+   0010   f8 0a         NDIG 	LDI $0A     ; load 0A into D
+   0012   a5            	PLO   R5 ; put D in R5.0
+   0013   85            RND	GLO   R5 ; get R5.0
+   0014   3a 19         	BNZ CONT   ; if D|0 branch to 18
+   0016   f8 0a         	LDI $0A      ; load 0A into D
+   0018   a5            	PLO   R5 ; put D in R5.0
+   0019   25            CONT 	DEC   R5 ; decrement R5
+   001a   3f 13         	BN4 RND     ; if EF4=0 (INPUT button up)branch to 12
+   001c   37 1c         .1B     B4 .1B      ; if EF4=1 (INPUT button down) branch to 1B
+   001e   7a            	REQ      ; reset Q (LED off)
+   001f   85            	GLO   R5 ; get R5.0
+   0020   57            	STR   R7 ; store value of D at location addressed by R7
+   0021   17            	INC   R7 ; increment R7
+   0022   56            	STR   R6 ; store value of D at location addressed by R6
+   0023   16            	INC   R6 ; increment R6
+   0024   22            	DEC   R2 ; decrement R2
+   0025   82            	GLO   R2 ; get R2.0
+   0026   3a 10         	BNZ NDIG      ; if D|0 branch to 0F
+   0028   f8 e0         	LDI $E0   ; load E0 into D
+   002a   a7            	PLO   R7 ; put D to R7.0
+   002b   e7            	SEX   R7 ; set X=7
+   002c   f8 04         	LDI $04      ; load 04 into D
+   002e   a3            	PLO   R3 ; put in R3.0
+   002f   47            PAR1 	LDA   R7   ; get byte from location addressed by R7
+   0030   f5            	SD       ; subtract D
+   0031   32 63         	BZ SAME       ; if D=0 branch to 62
+   0033   23            	DEC   R3 ; decrement R3
+   0034   83            	GLO   R3 ; get R3.0
+   0035   3a 2f         	BNZ PAR1      ; if D|0 branch to 2E
+   0037   f8 e0         	LDI $E0     ;load E0 into D
+   0039   a7            	PLO   R7 ; put in R7.0
+   003a   f8 03         	LDI $03     ; load 03 into D
+   003c   a3            	PLO   R3 ; put in R3.0
+   003d   47            PAR2 	LDA   R7   ; get byte from location addressed by R7
+   003e   17            	INC   R7 ; increment R7
+   003f   f5            	SD       ; subtract D
+   0040   32 63         	BZ SAME       ; if D=0 branch to 62
+1802/1805A MEISTERMIND
+
+   0042   27            	DEC   R7 ; decrement R7
+   0043   23            	DEC   R3 ; decrement R3
+   0044   83            	GLO   R3 ; get R3.0
+   0045   3a 3d         	BNZ PAR2      ; if D|0 branch to 3C  
+   0047   f8 e0         	LDI $E0     ; load E0 into D
+   0049   a7            	PLO   R7 ; put in R7.0
+   004a   f8 02         	LDI $02      ; load 02 into D
+   004c   a3            	PLO   R3 ; put in R3.0
+   004d   47            PAR3 	LDA   R7   ; get byte from location addressed by R7
+   004e   17            	INC   R7 ; increment R7
+   004f   17            	INC   R7 ; increment R7
+   0050   f5            	SD       ; subtract D
+   0051   32 63         	BZ SAME       ; ifD=0 branch to 62
+   0053   27            	DEC   R7 ; decrement R7
+   0054   27            	DEC   R7 ; decrement R7
+   0055   23            	DEC   R3 ; decrement R3
+   0056   83            	GLO   R3 ; get R3.0
+   0057   3a 4d         	BNZ PAR3      ; if D|0 branch to 4C
+   0059   f8 e0         	LDI $E0     ; load E0 into D
+   005b   a7            	PLO   R7 ; put in R7.0
+   005c   47            	LDA   R7   ; get byte from location addressed by R7
+   005d   17            	INC   R7 ; increment R7
+   005e   17            	INC   R7 ; increment R7
+   005f   17            	INC   R7 ; increment R7
+   0060   f5            	SD       ; subtract D
+   0061   3a 66         	BNZ GAME    ; if D|0 branch to 65
+   0063   7b            SAME 	SEQ      ; set Q (LED on)
+   0064   30 00         	BR STUP     ; branch to 00
+   0066   f8 f0         GAME 	LDI $F0      ; load F0 into D
+   0068   a1            	PLO   R1 ; put in R1.0
+   0069   f8 ee         	LDI $EE      ; load EE into D
+   006b   51            	STR   R1 ; store value of D at location addressed by R1
+   006c   e1            	SEX   R1 ; set X=1
+   006d   64            	OUT 4     ; put memory byte addressed by register designated by X
+   006e   f8 e0         	LDI $E0      ; load E0 into D              on bus (display shows EE)
+   0070   a7            	PLO   R7 ; put in R7.0
+   0071   3f 71         .70	BN4 .70      ; if EF4=0 (INPUT button up) branch to 70
+   0073   37 73         .72	B4 .72       ; if EF4=1 (INPUT button down) branch to 72
+   0075   6c            	INP 4     ; store byte on bus in D and in mem. loc. addressed by
+   0076   a4            	PLO   R4 ; put D in R4.0               register designated by X
+   0077   64            	OUT 4     ; put mem. byte addressed by register designated by X on 
+   0078   84            NTRY	GLO   R4 ; get R4.0                                           bus
+   0079   aa            	PLO   RA ; put in RA.0
+   007a   e1            GNDG	SEX   R1 ; set X=1
+   007b   3f 7b         .7A	BN4 .7A     ; if EF4=0 (INPUT button up) branch to 7A
+   007d   37 7d         .7C	B4 .7C      ; if EF4=1 (INPUT button down) branch to 7C
+   007f   6c            	INP 4     ; store byte on bus in D and in mem. loc. addressed by
+   0080   ab            	PLO   RB ; put D in RB.0            register designated by X
+   0081   e7            	SEX   R7 ; set X=7
+   0082   f5            	SD       ; subtract D
+   0083   3a 8d         	BNZ RWR    ; if D|0 branch to 8C
+   0085   18            	INC   R8 ; increment R8
+   0086   17            ADV  	INC   R7 ; increment R7
+   0087   2a            	DEC   RA ; decrement RA
+   0088   8a            	GLO   RA ; get RA.0
+   0089   3a 7a         	BNZ GNDG      ; if D|0 branch to 79
+   008b   30 a1         	BR DSPL       ; branch to A0
+   008d   f8 e8         RWR  	LDI $E8     ; load E8 into D
+1802/1805A MEISTERMIND
+
+   008f   a6            	PLO   R6 ; put in R6.0
+   0090   e6            	SEX   R6 ; set X=6
+   0091   84            	GLO   R4 ; get R4.0
+   0092   ad            	PLO   RD ; put in RD.0
+   0093   8b            RPT  	GLO   RB ; get RB.0
+   0094   f5            	SD       ; subtract D
+   0095   3a 9a         	BNZ INCR      ; if D|0 branch to 99
+   0097   19            	INC   R9 ; increment R9
+   0098   30 86         	BR ADV       ; branch to 85
+   009a   16            INCR 	INC   R6 ; increment R6
+   009b   2d            	DEC   RD ; decrement RD
+   009c   8d            	GLO   RD ; get RD.0
+   009d   3a 93         	BNZ RPT      ; if D|0 branch to 92
+   009f   30 86         	BR ADV      ; branch to 85
+   00a1   e1            DSPL 	SEX   R1 ; set X=1
+   00a2   f8 f0         	LDI $F0      ; load F0 into D
+   00a4   a1            	PLO   R1 ; put in R1.0
+   00a5   88            	GLO   R8 ; get R8.0
+   00a6   51            	STR   R1 ; store value of D at location addressed by R1
+   00a7   64            	OUT 4     ; put mem. byte addressed by register designated by X on 
+   00a8   f8 a0         	LDI $A0      ; load A0 into D                                   bus
+   00aa   a8            	PLO   R8 ; put in R8.0
+   00ab   89            	GLO   R9 ; get R9.0
+   00ac   51            	STR   R1 ; store value of D at location addressed by R1
+   00ad   3f ad         .AC	BN4 .AC     ; if EF4=0 (INPUT button up) branch to AC
+   00af   37 af         .AE	B4 .AE      ; if EF4=1 (INPUT button down) branch to AE
+   00b1   64            	OUT 4     ; put mem. byte addressed by register designated by X on 
+   00b2   f8 b0         	LDI $B0      ; load B0 into D                                  bus 
+   00b4   a9            	PLO   R9 ; put in R9.0
+   00b5   c4            	NOP      ; no operation
+   00b6   f8 f0         	LDI $F0      ; load F0 into D
+   00b8   a1            	PLO   R1 ; put in R1.0
+   00b9   e1            	SEX   R1 ; set X=1
+   00ba   f8 e0         	LDI $E0      ; load E0 into D
+   00bc   a7            	PLO   R7 ; put in R7.0
+   00bd   30 78         	BR NTRY       ; branch to 77
+                        
+   00bf                 	end
+1802/1805A MEISTERMIND
+
+001c  .1B           0071  .70           0073  .72           007b  .7A       
+007d  .7C           00ad  .AC           00af  .AE           0086  ADV       
+0019  CONT          00a1  DSPL          0066  GAME          007a  GNDG      
+009a  INCR          0010  NDIG          0078  NTRY          002f  PAR1      
+003d  PAR2          004d  PAR3          0000  R0            0001  R1        
+0002  R2            0003  R3            0004  R4            0005  R5        
+0006  R6            0007  R7            0008  R8            0009  R9        
+000a  RA            000b  RB            000c  RC            000d  RD        
+000e  RE            000f  RF            0013  RND           0093  RPT       
+008d  RWR           0063  SAME          0000  STUP          
+
