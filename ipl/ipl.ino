@@ -52,6 +52,7 @@ void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
   // set output pins and set data to C4 = NOP
+  delay(500);  
   pinMode(D0, OUTPUT);
   digitalWrite(D1, LOW);
   pinMode(D1, OUTPUT);
@@ -72,7 +73,7 @@ void setup() {
   pinMode(STROBE_S, OUTPUT);
   digitalWrite(STROBE_R, LOW);
   digitalWrite(STROBE_S, HIGH);
-  delay(1000);  
+  delay(1500);  
  
   //Serial.begin(9600);
   /* LED on
