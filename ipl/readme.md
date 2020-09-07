@@ -4,6 +4,14 @@ Beginnings for a ipl based on arduino to upload program to microelf board
 Attention: ONLY works if using 3-pos toggle switches with a middle position,
 for IN and D0-D7!
 
+IN, D0-D7 MUST be in the middle position when arduino is active after reset/power on!
+
+Otherwise a short circuit will probably damage arduino and/or microeld - you have been warned!
+
+Better insert min 220 ohm resistors in above lines to limit current on such case.
+
+USE AT OWN RISC!
+
 ```
   (c) 2020 Peter Sieg - released under GNU GPL V2
   Before switching on, make SURE the D0-D7 and IN are in the middle position!!
@@ -19,7 +27,7 @@ for IN and D0-D7!
           3 = +5V                  3 - Pin 15 on 74LS279
 */
    
-#define D0 2
+#define D0 2 
 #define D1 3
 #define D2 4
 #define D3 5
