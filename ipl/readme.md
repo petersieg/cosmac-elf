@@ -6,7 +6,7 @@ for IN and D0-D7!
 
 IN, D0-D7 MUST be in the middle position when arduino is active after reset/power on!
 
-Otherwise a short circuit will probably damage arduino and/or microeld - you have been warned!
+Otherwise a short circuit will probably damage arduino and/or microelf - you have been warned!
 
 Better insert min 220 ohm resistors in above lines to limit current on such case.
 
