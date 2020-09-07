@@ -51,7 +51,7 @@ void setup() {
 
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
-  // set output pins and set data to 4C = NOP
+  // set output pins and set data to C4 = NOP
   pinMode(D0, OUTPUT);
   digitalWrite(D1, LOW);
   pinMode(D1, OUTPUT);
@@ -59,7 +59,7 @@ void setup() {
   pinMode(D2, OUTPUT);
   digitalWrite(D2, HIGH);
   pinMode(D3, OUTPUT);
-  digitalWrite(D3, HIGH);
+  digitalWrite(D3, LOW);
   pinMode(D4, OUTPUT);
   digitalWrite(D4, LOW);
   pinMode(D5, OUTPUT);
@@ -67,7 +67,7 @@ void setup() {
   pinMode(D6, OUTPUT);
   digitalWrite(D6, HIGH);
   pinMode(D7, OUTPUT);
-  digitalWrite(D7, LOW);
+  digitalWrite(D7, HIGH);
   pinMode(STROBE_R, OUTPUT);
   pinMode(STROBE_S, OUTPUT);
   digitalWrite(STROBE_R, LOW);
