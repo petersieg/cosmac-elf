@@ -5,6 +5,7 @@ Attention: ONLY works if using 3-pos toggle switches with a middle position,
 for IN and D0-D7!
 
 IN, D0-D7 MUST be in the middle position when arduino is active after reset/power on!
+BUT have LOAD in off position first and switch to ON after power on.
 
 Otherwise a short circuit will probably damage arduino and/or microelf - you have been warned!
 
