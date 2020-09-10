@@ -40,3 +40,5 @@ USE AT OWN RISC!
 #define STROBE_S 11 // Pin 15 on 74LS279
 
 ```
+
+![Bild](https://github.com/petersieg/cosmac-elf/blob/master/elf-white.jpeg)
