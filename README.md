@@ -12,6 +12,8 @@ Und mit weißer Platine:
 
 ![Bild](https://github.com/petersieg/cosmac-elf/blob/master/microelf-weiß.jpeg)
 
+![Bild](https://github.com/petersieg/cosmac-elf/blob/master/elf-white.jpeg)
+
 Files:
 
 cosmac.zip - Win 16-bit emulator for windows up to XP. For Win10 64-bit, one can use: https://github.com/otya128/winevdm
