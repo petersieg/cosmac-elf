@@ -64,3 +64,23 @@ AA
 52 64 22
 30 07
 ````
+
+LED Blinker:
+````
+@0000:
+7A - REQ - Reset ‘Q’ = 0 (turns ‘Q’ LED off)
+F8 - LDI - Load data (10) into ‘D’ register
+10
+B1 - PHI - Set high order byte of register R1 = ‘D’ (10)
+21 - DEC - Decrement contents of register R1
+91 - GHI - Set ‘D’ equal to contents of high order byte of R1
+3A - BNZ - If ‘D’ ≠ 0, short branch to address 0004
+04
+31 - BQ  - If ‘Q’ = 1, short branch to address 0000
+00
+7B - SEQ - Set ‘Q’ = 1 (turns ‘Q’ LED on)
+30 - BR. - Unconditional short branch to address 0001
+01
+````
+
+
