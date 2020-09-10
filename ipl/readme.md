@@ -41,4 +41,4 @@ USE AT OWN RISC!
 
 ```
 
-![Bild](https://github.com/petersieg/cosmac-elf/blob/master/elf-white.jpeg)
+![Bild](https://github.com/petersieg/cosmac-elf/blob/master/ipl/ipl-elf.jpeg)
