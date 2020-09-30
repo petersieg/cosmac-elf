@@ -52,7 +52,7 @@ void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
   // set output pins and set data to C4 = NOP
-  delay(500);  
+  delay(1500);  
   pinMode(D0, OUTPUT);
   digitalWrite(D1, LOW);
   pinMode(D1, OUTPUT);
@@ -91,7 +91,7 @@ void setup() {
   outbyte(0x1E);
   outbyte(0x64);
   outbyte(0x30);
-  outbyte(0x01);*/
+  outbyte(0x02);*/
   // meister - Mastermind
   outbyte(0xF8);
   outbyte(0x05);
